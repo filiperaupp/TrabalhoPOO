@@ -11,5 +11,6 @@ public class Cliente extends Pessoa {
     // consulta,edita,cancela chamados
     // pode ver apenas os seus chamados//
 
+    private static int identificador=100;
 
 }

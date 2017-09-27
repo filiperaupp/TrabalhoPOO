@@ -5,4 +5,6 @@ public class Tecnico extends Pessoa {
     // informar a data e hora que foi finalizado o chamado
     // mostrado ao técnico às tarefas a serem realizadas pela sua prioridade
 
+    private static int identificador=200;
+
 }
