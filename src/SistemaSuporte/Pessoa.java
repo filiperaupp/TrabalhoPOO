@@ -56,6 +56,10 @@ public class Pessoa {
         return id;
     }
 
+    public int getTipoUsuario() {
+        return tipoUsuario;
+    }
+
     public void cadastrarPessoa(int identificador){
         Scanner tc = new Scanner (System.in);
         System.out.println("Cadastrando Usuário...");
