@@ -17,9 +17,9 @@ public class PessoaDao {
 
     public void save(Pessoa pessoa){
 
-        if(a!=null){
+        if(pessoa!=null){
             String sql= "INSERT INTO ALUNO (NOME,IDADE,CODIGO,SALARIO) " +
-                    "VALUES ('"+pessoa.getId()+"','"+pessoa.getNome()+"', "+pessoa.getTelefone()+", '"+pessoa.getEmail()+"', '"+pessoa.getLogin()+"', '"+pessoa.getSenha()+"' );";
+                    "VALUES ('"+pessoa.getTipoUsuario()+"','"+pessoa.getId()+"','"+pessoa.getNome()+"', "+pessoa.getTelefone()+", '"+pessoa.getEmail()+"', '"+pessoa.getLogin()+"', '"+pessoa.getSenha()+"' );";
             sqlite.executarSQL(sql);
         }
 
