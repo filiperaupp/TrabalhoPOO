@@ -35,13 +35,15 @@ public class MainCC {
         else
             System.out.println("Erro");
 
+        System.out.println("oi");
+        
         conta1.mostrarSaldo();
         conta2.mostrarSaldo();
         conta1.transferir(conta2,300);
         conta1.mostrarSaldo();
         conta2.mostrarSaldo();
 
-        if (conta1.compararConta(conta2))   
+        if (conta1.compararConta(conta2))
             System.out.println("Contas iguais");
         else
             System.out.println("Contas diferentes");
