@@ -9,8 +9,8 @@ public class Gerente extends Pessoa {
     private static int identificador=300;
 
     public void criaGerente(){
-        Gerente gerente = new Gerente();
-        gerente.cadastrarPessoa(identificador);
 
+        this.setLogin("admin");
+        this.setSenha("admin");
     }
 }

@@ -7,4 +7,7 @@ public class Tecnico extends Pessoa {
 
     private static int identificador=200;
 
+    public static int getIdentificador() {
+        return identificador;
+    }
 }

@@ -1,11 +1,22 @@
 package SistemaSuporte;
 
+import java.util.Scanner;
+
 public class Main {
     public static void main(String[] args) {
+        Scanner tc = new Scanner(System.in);
         int ope;
-
-        System.out.println("Sistema de Chamados...");
         Gerente admin = new Gerente();
-        admin.criaGerente();
+
+        do {
+
+            System.out.println("Sistema de Chamados...");
+            System.out.println("Login: ");
+            login = tc.next();
+            System.out.println("Senha: ");
+            senha = tc.next();
+
+            if ()
+        } while (ope!=0);
     }
 }

@@ -13,4 +13,7 @@ public class Cliente extends Pessoa {
 
     private static int identificador=100;
 
+    public static int getIdentificador() {
+        return identificador;
+    }
 }
