@@ -15,23 +15,45 @@ public class PessoaDao {
         sqlite = new JavaDb.DbHelper();
     }
 
-    public void save(Pessoa pessoa){
+    public void save(Object pessoa){
 
-        if(pessoa!=null){
-            String sql= "INSERT INTO ALUNO (NOME,IDADE,CODIGO,SALARIO) " +
-                    "VALUES ('"+pessoa.getTipoUsuario()+"','"+pessoa.getId()+"','"+pessoa.getNome()+"', "+pessoa.getTelefone()+", '"+pessoa.getEmail()+"', '"+pessoa.getLogin()+"', '"+pessoa.getSenha()+"' );";
-            sqlite.executarSQL(sql);
+        if (pessoa instanceof Cliente) {
+            Cliente c = (Cliente) pessoa;
+            if(pessoa!=null){
+                String sql= "INSERT INTO PESSOAS (TIPO_USUARIO, ID, NOME, TELEFONE, EMAIL, LOGIN, SENHA) " +
+                        "VALUES ('"+c.getTipoUsuario()+"','"+c.getId()+"','"+c.getNome()+"', "+c.getTelefone()+", '"+c.getEmail()+"', '"+c.getLogin()+"', '"+c.getSenha()+"' );";
+                sqlite.executarSQL(sql);
+            }
         }
+
+        else if (pessoa instanceof Gerente) {
+            Gerente g = (Gerente) pessoa;
+            if(pessoa!=null){
+                String sql= "INSERT INTO PESSOAS (TIPO_USUARIO, ID, NOME, TELEFONE, EMAIL, LOGIN, SENHA) " +
+                        "VALUES ('"+g.getTipoUsuario()+"','"+g.getId()+"','"+g.getNome()+"', "+g.getTelefone()+", '"+g.getEmail()+"', '"+g.getLogin()+"', '"+g.getSenha()+"' );";
+                sqlite.executarSQL(sql);
+            }
+        }
+
+        else if (pessoa instanceof Tecnico) {
+            Tecnico t = (Tecnico) pessoa;
+            if(pessoa!=null){
+                String sql= "INSERT INTO PESSOAS (TIPO_USUARIO, ID, NOME, TELEFONE, EMAIL, LOGIN, SENHA) " +
+                        "VALUES ('"+t.getTipoUsuario()+"','"+t.getId()+"','"+t.getNome()+"', "+t.getTelefone()+", '"+t.getEmail()+"', '"+t.getLogin()+"', '"+t.getSenha()+"' );";
+                sqlite.executarSQL(sql);
+            }
+        }
+
 
     }
 
-    public ArrayList<Aluno> list (){
-        ArrayList<Aluno> lista= new ArrayList<>();
-        String sql= "SELECT * FROM ALUNO";
+    public ArrayList<Pessoa> list (){
+        ArrayList<Pessoa> lista= new ArrayList<>();
+        String sql= "SELECT * FROM PESSOAS";
         ResultSet rs= sqlite.querySql(sql);
         try {
             while (rs.next()){
-                long id = rs.getLong("ID");
+                int tipoUsuario = rs.getInt("TIPO_USUARIO");
                 String  name = rs.getString("NOME");
                 int age  = rs.getInt("IDADE");
                 String  codigo = rs.getString("CODIGO");
@@ -42,8 +64,8 @@ public class PessoaDao {
                 System.out.println( "ENDERECO = " + codigo );
                 System.out.println( "SALARIO = " + salary );
                 System.out.println();
-                Aluno a =new Aluno(id,name,age,codigo,salary);
-                lista.add(a);
+                Pessoa p =new Pessoa(id,name,age,codigo,salary);
+                lista.add(p);
             }
         }catch (Exception e) {
             System.out.println(e.getMessage());
