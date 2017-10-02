@@ -12,7 +12,7 @@ public class DbUtils {
     {
         String sql = "CREATE TABLE PESSOAS" +
                 "(ID                INTEGER NOT NULL PRIMARY KEY," +
-                "(TIPO_USUARIO      INTEGER NOT NULL, " +
+                " TIPO_USUARIO      INTEGER NOT NULL, " +
                 " NOME              TEXT    NOT NULL, " +
                 " TELEFONE          TEXT    ,         " +
                 " EMAIL             TEXT    ,         " +

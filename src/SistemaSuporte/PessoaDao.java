@@ -52,9 +52,33 @@ public class PessoaDao {
     }
 
 
-    public String verificaLogin(String login, String senha){
-        String sql = "SELECT TIPO_USUARIO FROM PESSOAS WHERE LOGIN === '"+login+"' AND SENHA === '"+senha+"'";
-        return sql;
+    public Pessoa verificaLogin(String login, String senha){
+        String sql = "SELECT * FROM PESSOAS WHERE LOGIN === '"+login+"' AND SENHA === '"+senha+"'";
+        ResultSet rs= sqlite.querySql(sql);
+        Pessoa p = new Pessoa();
+        try {
+            while (rs.next()){
+                int id= rs.getInt("ID");
+                int tipoUsuario = rs.getInt("TIPO_USUARIO");
+                String  nome = rs.getString("NOME");
+                String  telefone = rs.getString("TELEFONE");
+                String  email = rs.getString("EMAIL");
+                String  loginn = rs.getString("LOGIN");
+                String  senhaa = rs.getString("SENHA");
+                System.out.println( "ID = " + id );
+                System.out.println( "TIPO USUÁRIO = " + tipoUsuario);
+                System.out.println( "NOME = " + nome );
+                System.out.println( "TELEFONE = " + telefone );
+                System.out.println( "EMAIL = " + email );
+                System.out.println( "LOGIN = " + loginn );
+                System.out.println( "SENHA = " + senhaa );
+                System.out.println();
+                p =new Pessoa(tipoUsuario,id,nome,telefone,email,login,senha);
+            }
+        }catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        return p;
     }
 
 

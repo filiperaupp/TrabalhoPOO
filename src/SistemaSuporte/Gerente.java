@@ -9,14 +9,12 @@ public class Gerente extends Pessoa {
     private static int identificador=300;
 
     public Gerente(int id, String nome, String telefone, String email, String login, String senha) {
-        super(this.identificador, id, nome, telefone, email, login, senha);
+        super(identificador, id, nome, telefone, email, login, senha);
     }
 
 
 
     public void criaGerente(){
 
-        this.setLogin("admin");
-        this.setSenha("admin");
     }
 }

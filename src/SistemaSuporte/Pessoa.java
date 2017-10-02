@@ -12,6 +12,10 @@ public class Pessoa {
     private String senha;
 
 
+    public Pessoa(){
+
+    }
+
     public Pessoa(int tipoUsuario, int id, String nome, String telefone, String email, String login, String senha) {
         this.nome = nome;
         this.telefone = telefone;
@@ -70,7 +74,7 @@ public class Pessoa {
         return tipoUsuario;
     }
 
-    public void cadastrarPessoa(int identificador){
+    public void cadastrar(int identificador){
         Scanner tc = new Scanner (System.in);
         System.out.println("Cadastrando Usuário...");
         System.out.println("Nome: ");

@@ -24,10 +24,12 @@ public class DbHelper {
             stmt = con.createStatement();
             stmt.executeUpdate(sql); /// execuçao do comando no BD
             stmt.close(); // Fechamento da comunicacao
+            System.out.println("Código SQL executado");
         } catch ( Exception e ) {
             System.err.println( e.getClass().getName() + ":  " + e.getMessage() );
+            System.out.println("Falha execução SQL");
         }
-        System.out.println("Sucesso!!!");
+
     }
 
 
@@ -39,7 +41,7 @@ public class DbHelper {
         } catch ( Exception e ) {
             System.err.println( e.getClass().getName() + ":  " + e.getMessage() );
         }
-        System.out.println("Sucesso");
+        System.out.println("Sucesso querySQL");
         return null;
     }
 

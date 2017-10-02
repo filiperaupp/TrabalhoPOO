@@ -20,13 +20,13 @@ public class Main {
 
 
         do {
-
             System.out.println("---Sistema de Chamados---");
             System.out.println("Login: ");
             login =  tc.next(); // Vai pesquisar no banco se já existe esse login e senha
             System.out.println("Senha: ");
             senha = tc.next();
-            if(daoPessoa.verificaLogin(login,senha)=="100"){
+            Pessoa retornoLogin = daoPessoa.verificaLogin(login,senha);
+            if(retornoLogin.getTipoUsuario()==300){
                 // se o identificador for 100 quer dizer que é um cliente
                     do {
                         System.out.println("Cliente " + daoPessoa.getClass().getName()+ "está logado no sistema...");
