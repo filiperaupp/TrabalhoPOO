@@ -25,7 +25,7 @@ public class DbHelper {
             stmt.executeUpdate(sql); /// execuçao do comando no BD
             stmt.close(); // Fechamento da comunicacao
         } catch ( Exception e ) {
-            System.err.println( e.getClass().getName() + ": " + e.getMessage() );
+            System.err.println( e.getClass().getName() + ":  " + e.getMessage() );
         }
         System.out.println("Sucesso!!!");
     }
@@ -37,9 +37,9 @@ public class DbHelper {
             ResultSet rs = stmt.executeQuery( sql );
             return rs;
         } catch ( Exception e ) {
-            System.err.println( e.getClass().getName() + ": " + e.getMessage() );
+            System.err.println( e.getClass().getName() + ":  " + e.getMessage() );
         }
-        System.out.println("Operation done successfully");
+        System.out.println("Sucesso");
         return null;
     }
 

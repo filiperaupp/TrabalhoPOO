@@ -30,7 +30,13 @@ public class PessoaDao {
             Gerente g = (Gerente) pessoa;
             if(pessoa!=null){
                 String sql= "INSERT INTO PESSOAS (TIPO_USUARIO, ID, NOME, TELEFONE, EMAIL, LOGIN, SENHA) " +
-                        "VALUES ('"+g.getTipoUsuario()+"','"+g.getId()+"','"+g.getNome()+"', "+g.getTelefone()+", '"+g.getEmail()+"', '"+g.getLogin()+"', '"+g.getSenha()+"' );";
+                        "VALUES ('"+g.getTipoUsuario()+"'," +
+                                "'"+g.getId()+"'," +
+                                "'"+g.getNome()+"'," +
+                                " "+g.getTelefone()+"," +
+                                " '"+g.getEmail()+"'," +
+                                " '"+g.getLogin()+"'," +
+                                " '"+g.getSenha()+"' );";
                 sqlite.executarSQL(sql);
             }
         }
@@ -38,8 +44,8 @@ public class PessoaDao {
         else if (pessoa instanceof Tecnico) {
             Tecnico t = (Tecnico) pessoa;
             if(pessoa!=null){
-                String sql= "INSERT INTO PESSOAS (TIPO_USUARIO, ID, NOME, TELEFONE, EMAIL, LOGIN, SENHA) " +
-                        "VALUES ('"+t.getTipoUsuario()+"','"+t.getId()+"','"+t.getNome()+"', "+t.getTelefone()+", '"+t.getEmail()+"', '"+t.getLogin()+"', '"+t.getSenha()+"' );";
+                String sql= "INSERT INTO PESSOAS (ID, TIPO_USUARIO, NOME, TELEFONE, EMAIL, LOGIN, SENHA) " +
+                        "VALUES ('"+t.getId()+"', '"+t.getTipoUsuario()+"','"+t.getNome()+"', "+t.getTelefone()+", '"+t.getEmail()+"', '"+t.getLogin()+"', '"+t.getSenha()+"' );";
                 sqlite.executarSQL(sql);
             }
         }
@@ -51,15 +57,15 @@ public class PessoaDao {
         ResultSet rs= sqlite.querySql(sql);
         try {
             while (rs.next()){
-                int tipoUsuario = rs.getInt("TIPO_USUARIO");
                 int id= rs.getInt("ID");
+                int tipoUsuario = rs.getInt("TIPO_USUARIO");
                 String  nome = rs.getString("NOME");
                 String  telefone = rs.getString("TELEFONE");
                 String  email = rs.getString("EMAIL");
                 String  login = rs.getString("LOGIN");
                 String  senha = rs.getString("SENHA");
-                System.out.println( "TIPO USUÁRIO = " + tipoUsuario);
                 System.out.println( "ID = " + id );
+                System.out.println( "TIPO USUÁRIO = " + tipoUsuario);
                 System.out.println( "NOME = " + nome );
                 System.out.println( "TELEFONE = " + telefone );
                 System.out.println( "EMAIL = " + email );

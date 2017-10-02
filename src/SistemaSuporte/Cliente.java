@@ -4,12 +4,16 @@ package SistemaSuporte;
  * Created by filip on 25/09/2017.
  */
 public class Cliente extends Pessoa {
-
     // abrir um chamado
     // define prioridade (Urgente,alta,moderada,baixa)
     // sistema deve atribuir as tarefas geralmente aos técnicos com menos chamados em aberto.
     // consulta,edita,cancela chamados
     // pode ver apenas os seus chamados//
+
+
+    public Cliente(int tipoUsuario, int id, String nome, String telefone, String email, String login, String senha) {
+        super(tipoUsuario, id, nome, telefone, email, login, senha);
+    }
 
     private static int identificador=100;
 

@@ -1,11 +1,9 @@
-package JavaDb;
+package SistemaSuporte;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.Statement;
+import JavaDb.DbHelper;
 
 public class DbUtils {
-    DbHelper sqlite;
+    JavaDb.DbHelper sqlite;
 
     public DbUtils(){
         sqlite = new DbHelper();
@@ -23,6 +21,7 @@ public class DbUtils {
         sqlite.executarSQL(sql);
 
     }
+
 
     public  void dropTable() {
 

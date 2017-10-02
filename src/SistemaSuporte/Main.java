@@ -6,13 +6,22 @@ public class Main {
     public static void main(String[] args) {
         Scanner tc = new Scanner(System.in);
         String login,senha;
+        PessoaDao daoPessoa = new PessoaDao();
+        try {
+            DbUtils dataBase = new DbUtils();
+            Gerente admin = new Gerente(1,"admin","0000-0000","@yahoo.com","admin1","admin1");
+            daoPessoa.save(admin);
+        }
+        catch (Exception e) {
+            System.out.println("Banco e Admin1 ja criado.");
+        }
         int ope;
         int operacao;
-        Gerente admin = new Gerente();
+
 
         do {
 
-            System.out.println("Sistema de Chamados...");
+            System.out.println("---Sistema de Chamados---");
             System.out.println("Login: ");
             login = tc.next(); // Vai pesquisar no banco se já existe esse login e senha
             System.out.println("Senha: ");
