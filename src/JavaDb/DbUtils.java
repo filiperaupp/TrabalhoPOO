@@ -12,8 +12,8 @@ public class DbUtils {
     }
     public  void criarDB()
     {
-        String sql = "CREATE TABLE ALUNO " +
-                "(ID  INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT," +
+        String sql = "CREATE TABLE PESSOAS" +
+                "(ID  INTEGER NOT NULL PRIMARY KEY," +
                 " NOME           TEXT    NOT NULL, " +
                 " IDADE            INT     NOT NULL, " +
                 " CODIGO        CHAR(50), " +

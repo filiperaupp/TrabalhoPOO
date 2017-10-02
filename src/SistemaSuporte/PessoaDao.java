@@ -43,8 +43,6 @@ public class PessoaDao {
                 sqlite.executarSQL(sql);
             }
         }
-
-
     }
 
     public ArrayList<Pessoa> list (){
@@ -54,17 +52,21 @@ public class PessoaDao {
         try {
             while (rs.next()){
                 int tipoUsuario = rs.getInt("TIPO_USUARIO");
-                String  name = rs.getString("NOME");
-                int age  = rs.getInt("IDADE");
-                String  codigo = rs.getString("CODIGO");
-                double salary = rs.getDouble("SALARIO");
+                int id= rs.getInt("ID");
+                String  nome = rs.getString("NOME");
+                String  telefone = rs.getString("TELEFONE");
+                String  email = rs.getString("EMAIL");
+                String  login = rs.getString("LOGIN");
+                String  senha = rs.getString("SENHA");
+                System.out.println( "TIPO USUÁRIO = " + tipoUsuario);
                 System.out.println( "ID = " + id );
-                System.out.println( "NOME = " + name );
-                System.out.println( "IDADE = " + age );
-                System.out.println( "ENDERECO = " + codigo );
-                System.out.println( "SALARIO = " + salary );
+                System.out.println( "NOME = " + nome );
+                System.out.println( "TELEFONE = " + telefone );
+                System.out.println( "EMAIL = " + email );
+                System.out.println( "LOGIN = " + login );
+                System.out.println( "SENHA = " + senha );
                 System.out.println();
-                Pessoa p =new Pessoa(id,name,age,codigo,salary);
+                Pessoa p =new Pessoa(tipoUsuario,id,nome,telefone,email,login,senha);
                 lista.add(p);
             }
         }catch (Exception e) {

@@ -5,6 +5,7 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         Scanner tc = new Scanner(System.in);
+        String login,senha;
         int ope;
         int operacao;
         Gerente admin = new Gerente();

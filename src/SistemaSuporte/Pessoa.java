@@ -3,14 +3,24 @@ package SistemaSuporte;
 import java.util.Scanner;
 
 public class Pessoa {
-
+    private int tipoUsuario;
+    private int id=0;
     private String nome;
     private String telefone;
     private String email;
     private String login;
     private String senha;
-    private int id=0;
-    private int tipoUsuario;
+
+
+    public Pessoa(int tipoUsuario, int id, String nome, String telefone, String email, String login, String senha) {
+        this.nome = nome;
+        this.telefone = telefone;
+        this.email = email;
+        this.login = login;
+        this.senha = senha;
+        this.id = id;
+        this.tipoUsuario = tipoUsuario;
+    }
 
     public String getNome() {
         return nome;
