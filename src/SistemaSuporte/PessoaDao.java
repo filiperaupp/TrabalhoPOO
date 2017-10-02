@@ -51,6 +51,13 @@ public class PessoaDao {
         }
     }
 
+
+    public String verificaLogin(String login, String senha){
+        String sql = "SELECT TIPO_USUARIO FROM PESSOAS WHERE LOGIN === '"+login+"' AND SENHA === '"+senha+"'";
+        return sql;
+    }
+
+
     public ArrayList<Pessoa> list (){
         ArrayList<Pessoa> lista= new ArrayList<>();
         String sql= "SELECT * FROM PESSOAS";
