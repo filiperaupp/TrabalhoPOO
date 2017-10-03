@@ -24,7 +24,6 @@ public class DbHelper{
             System.err.println( e.getClass().getName() + ":  " + e.getMessage() );
             System.out.println("Falha execução SQL");
         }
-
     }
 
 

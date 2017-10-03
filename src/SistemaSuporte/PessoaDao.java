@@ -21,7 +21,13 @@ public class PessoaDao {
             Cliente c = (Cliente) pessoa;
             if(pessoa!=null){
                 String sql= "INSERT INTO PESSOAS (TIPO_USUARIO, ID, NOME, TELEFONE, EMAIL, LOGIN, SENHA) " +
-                        "VALUES ('"+c.getTipoUsuario()+"','"+c.getId()+"','"+c.getNome()+"', "+c.getTelefone()+", '"+c.getEmail()+"', '"+c.getLogin()+"', '"+c.getSenha()+"' );";
+                        "VALUES ('"+c.getTipoUsuario()+"'," +
+                                 "'"+c.getId()+"'," +
+                                 "'"+c.getNome()+"', " +
+                                 ""+c.getTelefone()+", " +
+                                 "'"+c.getEmail()+"', " +
+                                 "'"+c.getLogin()+"', " +
+                                 "'"+c.getSenha()+"' );";
                 sqlite.executarSQL(sql);
             }
         }
@@ -29,11 +35,11 @@ public class PessoaDao {
         else if (pessoa instanceof Gerente) {
             Gerente g = (Gerente) pessoa;
             if(pessoa!=null){
-                String sql= "INSERT INTO PESSOAS (TIPO_USUARIO, ID, NOME, TELEFONE, EMAIL, LOGIN, SENHA) " +
-                        "VALUES ('"+g.getTipoUsuario()+"'," +
-                                "'"+g.getId()+"'," +
-                                "'"+g.getNome()+"'," +
-                                " "+g.getTelefone()+"," +
+                String sql= "INSERT INTO PESSOAS ( ID, TIPO_USUARIO, NOME, TELEFONE, EMAIL, LOGIN, SENHA) " +
+                        "VALUES ('"+g.getId()+"'," +
+                                " '"+g.getTipoUsuario()+"'," +
+                                " '"+g.getNome()+"'," +
+                                " '"+g.getTelefone()+"'," +
                                 " '"+g.getEmail()+"'," +
                                 " '"+g.getLogin()+"'," +
                                 " '"+g.getSenha()+"' );";
@@ -45,7 +51,13 @@ public class PessoaDao {
             Tecnico t = (Tecnico) pessoa;
             if(pessoa!=null){
                 String sql= "INSERT INTO PESSOAS (ID, TIPO_USUARIO, NOME, TELEFONE, EMAIL, LOGIN, SENHA) " +
-                        "VALUES ('"+t.getId()+"', '"+t.getTipoUsuario()+"','"+t.getNome()+"', "+t.getTelefone()+", '"+t.getEmail()+"', '"+t.getLogin()+"', '"+t.getSenha()+"' );";
+                        "VALUES ('"+t.getId()+"'," +
+                                 "'"+t.getTipoUsuario()+"'," +
+                                 "'"+t.getNome()+"', " +
+                                 ""+t.getTelefone()+", " +
+                                 "'"+t.getEmail()+"', " +
+                                 "'"+t.getLogin()+"', " +
+                                 "'"+t.getSenha()+"' );";
                 sqlite.executarSQL(sql);
             }
         }

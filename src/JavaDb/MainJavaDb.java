@@ -8,7 +8,6 @@ import java.util.Scanner;
 public class MainJavaDb {
     public static void main(String[] args) {
         Scanner tc = new Scanner(System.in);
-        DbUtils banco = new DbUtils();
         //banco.criarDB();
         AlunoDao daoAluno = new AlunoDao();
         int ope =0;
