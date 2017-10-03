@@ -6,7 +6,7 @@ import java.sql.DriverManager;
 /**
  * Created by ramon on 19/10/16.
  */
-public class ConnectionFactory {
+public class ConnectionFactory{
 
     public Connection getConnection(){
         try {

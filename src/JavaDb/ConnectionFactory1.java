@@ -7,7 +7,7 @@ import java.sql.SQLException;
 /**
  * Created by ramon on 19/10/16.
  */
-public class ConnectionFactory {
+public class ConnectionFactory1 {
 
     public Connection getConnection(){
         try {

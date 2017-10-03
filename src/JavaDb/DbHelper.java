@@ -2,10 +2,8 @@ package JavaDb;
 
 
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
-import java.util.ArrayList;
 
 /**
  * Created by ramon on 19/10/16.
@@ -15,7 +13,7 @@ public class DbHelper {
     private Statement stmt;
 
     public DbHelper(){ // usamos um construtor para ao criamos um objeto ele ja obtenha uma conexao;
-        con = new ConnectionFactory().getConnection() ;
+        con = new ConnectionFactory1().getConnection() ;
 
     }
 

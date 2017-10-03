@@ -1,15 +1,15 @@
 package SistemaSuporte;
 
-import JavaDb.DbHelper;
+
 
 public class DbUtils {
-    JavaDb.DbHelper sqlite;
+    DbHelper sqlite;
 
-    public DbUtils(){
+    public DbUtils() {
         sqlite = new DbHelper();
     }
-    public  void criarDB()
-    {
+
+    public void criarDB() {
         String sql = "CREATE TABLE PESSOAS" +
                 "(ID                INTEGER NOT NULL PRIMARY KEY," +
                 " TIPO_USUARIO      INTEGER NOT NULL, " +
@@ -17,13 +17,14 @@ public class DbUtils {
                 " TELEFONE          TEXT    ,         " +
                 " EMAIL             TEXT    ,         " +
                 " LOGIN             TEXT    NOT NULL, " +
-                " SENHA             TEXT    NOT NULL)";
+                " SENHA             TEXT    NOT NULL" +
+                ")";
         sqlite.executarSQL(sql);
 
     }
 
 
-    public  void dropTable() {
+    public void dropTable() {
 
         String sql = "DROP TABLE IF EXISTS PESSOAS";
         sqlite.executarSQL(sql);

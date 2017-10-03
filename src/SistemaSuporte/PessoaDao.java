@@ -10,9 +10,9 @@ import java.util.ArrayList;
  */
 public class PessoaDao {
 
-    JavaDb.DbHelper sqlite;
+    DbHelper sqlite;
     public PessoaDao(){
-        sqlite = new JavaDb.DbHelper();
+        sqlite = new DbHelper();
     }
 
     public void save(Object pessoa){
@@ -53,7 +53,7 @@ public class PessoaDao {
 
 
     public Pessoa verificaLogin(String login, String senha){
-        String sql = "SELECT * FROM PESSOAS WHERE LOGIN === '"+login+"' AND SENHA === '"+senha+"'";
+        String sql = "SELECT * FROM PESSOAS WHERE LOGIN == '"+login+"' AND SENHA == '"+senha+"'";
         ResultSet rs= sqlite.querySql(sql);
         Pessoa p = new Pessoa();
         try {
