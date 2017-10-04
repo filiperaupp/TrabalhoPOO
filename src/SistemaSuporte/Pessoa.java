@@ -17,13 +17,13 @@ public class Pessoa {
     }
 
     public Pessoa(int tipoUsuario, int id, String nome, String telefone, String email, String login, String senha) {
+        this.tipoUsuario = tipoUsuario;
+        this.id = id;
         this.nome = nome;
         this.telefone = telefone;
         this.email = email;
         this.login = login;
         this.senha = senha;
-        this.id = id;
-        this.tipoUsuario = tipoUsuario;
     }
 
     public String getNome() {

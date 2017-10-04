@@ -64,10 +64,10 @@ public class PessoaDao {
     }
 
 
-    public Pessoa verificaLogin(String login, String senha){
+    public Object verificaLogin(String login, String senha){
         String sql = "SELECT * FROM PESSOAS WHERE LOGIN == '"+login+"' AND SENHA == '"+senha+"'";
         ResultSet rs= sqlite.querySql(sql);
-        Pessoa p = new Pessoa();
+        Pessoa rp = new Pessoa();
         try {
             while (rs.next()){
                 int id= rs.getInt("ID");
@@ -77,20 +77,34 @@ public class PessoaDao {
                 String  email = rs.getString("EMAIL");
                 String  loginn = rs.getString("LOGIN");
                 String  senhaa = rs.getString("SENHA");
-                System.out.println( "ID = " + id );
-                System.out.println( "TIPO USUÁRIO = " + tipoUsuario);
-                System.out.println( "NOME = " + nome );
-                System.out.println( "TELEFONE = " + telefone );
-                System.out.println( "EMAIL = " + email );
-                System.out.println( "LOGIN = " + loginn );
-                System.out.println( "SENHA = " + senhaa );
-                System.out.println();
-                p =new Pessoa(tipoUsuario,id,nome,telefone,email,login,senha);
+                //System.out.println( "ID = " + id );
+                //System.out.println( "TIPO USUÁRIO = " + tipoUsuario);
+                //System.out.println( "NOME = " + nome );
+                //System.out.println( "TELEFONE = " + telefone );
+                //System.out.println( "EMAIL = " + email );
+                //System.out.println( "LOGIN = " + loginn );
+                //System.out.println( "SENHA = " + senhaa );
+                //System.out.println();
+                rp = new Pessoa(tipoUsuario,id,nome,telefone,email,login,senha);
             }
         }catch (Exception e) {
             System.out.println(e.getMessage());
         }
-        return p;
+        if (rp.getTipoUsuario()==100) {
+            Cliente cLogado = new Cliente(rp.getId(),rp.getNome(),rp.getTelefone(),rp.getEmail(),rp.getLogin(),rp.getSenha());
+            return cLogado;
+        }
+        else if (rp.getTipoUsuario()==200) {
+            Tecnico tLogado = new Tecnico(rp.getId(),rp.getNome(),rp.getTelefone(),rp.getEmail(),rp.getLogin(),rp.getSenha());
+            return tLogado;
+        }
+        else if (rp.getTipoUsuario()==300) {
+            Gerente gLogado = new Gerente(rp.getId(),rp.getNome(),rp.getTelefone(),rp.getEmail(),rp.getLogin(),rp.getSenha());
+            return gLogado;
+        }
+        else{
+            return rp;
+        }
     }
 
 

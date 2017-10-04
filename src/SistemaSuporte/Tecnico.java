@@ -7,6 +7,14 @@ public class Tecnico extends Pessoa {
 
     private static int identificador=200;
 
+    public Tecnico(){
+
+    }
+
+    public Tecnico(int id, String nome, String telefone, String email, String login, String senha) {
+        super(identificador, id, nome, telefone, email, login, senha);
+    }
+
     public static int getIdentificador() {
         return identificador;
     }

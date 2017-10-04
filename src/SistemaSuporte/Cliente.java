@@ -10,9 +10,12 @@ public class Cliente extends Pessoa {
     // consulta,edita,cancela chamados
     // pode ver apenas os seus chamados//
 
+    public Cliente() {
 
-    public Cliente(int tipoUsuario, int id, String nome, String telefone, String email, String login, String senha) {
-        super(tipoUsuario, id, nome, telefone, email, login, senha);
+    }
+
+    public Cliente(int id, String nome, String telefone, String email, String login, String senha) {
+        super(identificador, id, nome, telefone, email, login, senha);
     }
 
     private static int identificador=100;

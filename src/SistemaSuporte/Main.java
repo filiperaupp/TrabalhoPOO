@@ -27,45 +27,20 @@ public class Main {
             System.out.println("Senha: ");
             senha = tc.next();
 
-            Pessoa retornoLogin = daoPessoa.verificaLogin(login,senha);
+            Object retornoLogin = daoPessoa.verificaLogin(login,senha);
 
-            opeLogin=retornoLogin.getTipoUsuario();
-            switch (opeLogin) {
-                case 100:{
-                    Controller.telaCliente(retornoLogin);
-                    break;
-                }
-                case 200:{
-                    System.out.println("Técnico "+retornoLogin.getNome()+" logado no sistema.");
-                    int operacaoT = 0;
-                    System.out.println("Escolha uma opção: ");
-                    System.out.println("1-Mostrar Chamados Pendentes");
-                    System.out.println("2-Finalizar Chamado");
-                    System.out.println("3-Mostrar por prioridade");
-                    System.out.println("4-Sair da conta");
-                    operacaoT = tc.nextInt();
-
-                    switch (operacaoT){
-
-                        case 1:
-                            System.out.println("Chamados Pendentes: ");
-
-                    }
-                    break;
-                }
-                case 300:{
-                    Controller.telaGerente(retornoLogin);
-                    break;
-                }
-                default:
-                    System.out.println("Login não existente");
+            if(retornoLogin instanceof Cliente) {
+                Controller.telaCliente(retornoLogin);
             }
-            if (retornoLogin.getTipoUsuario()==200){
-
-
+            else if(retornoLogin instanceof Tecnico) {
+                Controller.telaTecnico(retornoLogin);
             }
-
-
+            else if (retornoLogin instanceof Gerente) {
+                Controller.telaGerente(retornoLogin);
+            }
+            else {
+                System.out.println("Login não existente");
+            }
         } while (ope!=0);
     }
 }

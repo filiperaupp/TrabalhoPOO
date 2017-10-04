@@ -64,7 +64,21 @@ public class Controller {
         } while (operacao!=4);
     }
     public static void telaTecnico(Object pessoaLogada){
+        //System.out.println("Técnico "+retornoLogin.getNome()+" logado no sistema.");
+        int operacaoT = 0;
+        System.out.println("Escolha uma opção: ");
+        System.out.println("1-Mostrar Chamados Pendentes");
+        System.out.println("2-Finalizar Chamado");
+        System.out.println("3-Mostrar por prioridade");
+        System.out.println("4-Sair da conta");
+        operacaoT = tc.nextInt();
 
+        switch (operacaoT){
+
+            case 1:
+                System.out.println("Chamados Pendentes: ");
+
+        }
     }
     public static void telaGerente(Object pessoaLogada){
         int operacao=0;
