@@ -11,7 +11,7 @@ public class ConnectionFactory{
     public Connection getConnection(){
         try {
             Class.forName("org.sqlite.JDBC");  //Usado para indicar o driver que deve ser carregado.
-            return DriverManager.getConnection("jdbc:sqlite:sistemaSuporte.db");
+            return DriverManager.getConnection("jdbc:sqlite:testeSuporte.db");
         } catch (Exception e) {
             throw new RuntimeException(e);        }
     }

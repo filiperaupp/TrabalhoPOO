@@ -9,9 +9,9 @@ public class Main {
         PessoaDao daoPessoa = new PessoaDao();
         try {
             DbUtils dataBase = new DbUtils();
-            //dataBase.criarDB();
-            //Gerente admin = new Gerente(1,"admin","0000-0000","@yahoo.com","admin1","admin1");
-            //daoPessoa.save(admin);
+            dataBase.criarDB();
+            Gerente admin = new Gerente(1,"admin","0000-0000","@yahoo.com","admin1","admin1");
+            daoPessoa.save(admin);
         }
         catch (Exception e) {
             System.out.println("Banco e Admin1 ja criado.");

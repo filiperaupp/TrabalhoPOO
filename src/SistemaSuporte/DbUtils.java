@@ -17,8 +17,17 @@ public class DbUtils {
                 " TELEFONE          TEXT    ,         " +
                 " EMAIL             TEXT    ,         " +
                 " LOGIN             TEXT    NOT NULL, " +
-                " SENHA             TEXT    NOT NULL" +
-                ")";
+                " SENHA             TEXT    NOT NULL  " +
+                ");"                                    +
+                "CREATE TABLE CHAMADOS"+
+                "(iD                INTEGER NOT NULL PRIMARY KEY," +
+                " ID_CLIENTE        INTEGER,          " +
+                " ID_TECNICO        INTEGER,          " +
+                " DESCRICAO         TEXT,             " +
+                " DATA_FIM          TEXT,             " +
+                " HORA_FIM          TEXT,             " +
+                " PRIORIDADE        TEXT);";
+
         sqlite.executarSQL(sql);
 
     }
