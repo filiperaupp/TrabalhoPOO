@@ -14,15 +14,13 @@ public class PessoaDao {
     public PessoaDao(){
         sqlite = new DbHelper();
     }
-
+// SALVAR SALVAR SALVAR SALVAR SALVAR SALVAR SALVAR SALVAR SALVAR SALVAR SALVAR SALVAR SALVAR SALVAR SALVAR
     public void save(Object pessoa){
-
         if (pessoa instanceof Cliente) {
             Cliente c = (Cliente) pessoa;
             if(pessoa!=null){
-                String sql= "INSERT INTO PESSOAS (TIPO_USUARIO, ID, NOME, TELEFONE, EMAIL, LOGIN, SENHA) " +
-                        "VALUES ('"+c.getTipoUsuario()+"'," +
-                                 "'"+c.getId()+"'," +
+                String sql= "INSERT INTO PESSOAS (TIPO_USUARIO, NOME, TELEFONE, EMAIL, LOGIN, SENHA) " +
+                        "VALUES ("+c.getTipoUsuario()+"," +
                                  "'"+c.getNome()+"', " +
                                  ""+c.getTelefone()+", " +
                                  "'"+c.getEmail()+"', " +
@@ -35,9 +33,8 @@ public class PessoaDao {
         else if (pessoa instanceof Gerente) {
             Gerente g = (Gerente) pessoa;
             if(pessoa!=null){
-                String sql= "INSERT INTO PESSOAS ( ID, TIPO_USUARIO, NOME, TELEFONE, EMAIL, LOGIN, SENHA) " +
-                        "VALUES ('"+g.getId()+"'," +
-                                " '"+g.getTipoUsuario()+"'," +
+                String sql= "INSERT INTO PESSOAS (TIPO_USUARIO, NOME, TELEFONE, EMAIL, LOGIN, SENHA) " +
+                        "VALUES ("+g.getTipoUsuario()+"," +
                                 " '"+g.getNome()+"'," +
                                 " '"+g.getTelefone()+"'," +
                                 " '"+g.getEmail()+"'," +
@@ -50,9 +47,8 @@ public class PessoaDao {
         else if (pessoa instanceof Tecnico) {
             Tecnico t = (Tecnico) pessoa;
             if(pessoa!=null){
-                String sql= "INSERT INTO PESSOAS (ID, TIPO_USUARIO, NOME, TELEFONE, EMAIL, LOGIN, SENHA) " +
-                        "VALUES ('"+t.getId()+"'," +
-                                 "'"+t.getTipoUsuario()+"'," +
+                String sql= "INSERT INTO PESSOAS (TIPO_USUARIO, NOME, TELEFONE, EMAIL, LOGIN, SENHA) " +
+                        "VALUES ("+t.getTipoUsuario()+"," +
                                  "'"+t.getNome()+"', " +
                                  ""+t.getTelefone()+", " +
                                  "'"+t.getEmail()+"', " +
@@ -62,8 +58,150 @@ public class PessoaDao {
             }
         }
     }
+//------------------------------------------------------------------------------------------------------
+// DELETAR DELETAR DELETAR DELETAR DELETAR DELETAR DELETAR DELETAR DELETAR DELETAR DELETAR DELETAR DELETAR
+    public void delete(Object pessoa){
+        if (pessoa instanceof Cliente) {
+            Cliente c = (Cliente) pessoa;
+            if(pessoa!=null){
+                String sql= "DELETE FROM PESSOAS WHERE ID="+c.getId()+";";
+                sqlite.executarSQL(sql);
+            }
+        }
+        else if (pessoa instanceof Gerente) {
+            Gerente g = (Gerente) pessoa;
+            if(pessoa!=null){
+                String sql= "DELETE FROM PESSOAS WHERE ID="+g.getId();
+                sqlite.executarSQL(sql);
+            }
+        }
+        else if (pessoa instanceof Tecnico) {
+            Tecnico t = (Tecnico) pessoa;
+            if(pessoa!=null){
+                String sql= "DELETE FROM PESSOAS WHERE ID="+t.getId();
+                sqlite.executarSQL(sql);
+            }
+        }
+    }
+//------------------------------------------------------------------------------------------------------
+// EDITAR EDITAR EDITAR EDITAR EDITAR EDITAR EDITAR EDITAR EDITAR EDITAR EDITAR EDITAR EDITAR EDITAR EDITAR
+    public void editar(Cliente clienteEdit) {
+        String sql =    "UPDATE PESSOAS " +
+                        "SET NOME = '"+clienteEdit.getNome()+"',  " +
+                        "TELEFONE = '"+clienteEdit.getTelefone()+"', " +
+                        "EMAIL = '"+clienteEdit.getEmail()+"', " +
+                        "LOGIN = '"+clienteEdit.getLogin()+"', " +
+                        "SENHA = '"+clienteEdit.getSenha()+"'  " +
+                        "WHERE ID="+clienteEdit.getId()+";";
+        sqlite.executarSQL(sql);
+//        System.out.println( "ID = " + clienteEdit.getId() );
+//        System.out.println( "TIPO USUÁRIO = " + clienteEdit.getIdentificador());
+//        System.out.println( "NOME = " + clienteEdit.getNome() );
+//        System.out.println( "TELEFONE = " + clienteEdit.getTelefone() );
+//        System.out.println( "EMAIL = " + clienteEdit.getEmail() );
+//        System.out.println( "LOGIN = " + clienteEdit.getLogin() );
+//        System.out.println( "SENHA = " + clienteEdit.getEmail() );
+//        System.out.println();
+    }
 
+    public void editar(Tecnico tecnicoEdit) {
+        String sql =    "UPDATE PESSOAS" +
+                "SET NOME   = '"+tecnicoEdit.getNome()+"',  " +
+                "TELEFONE   = '"+tecnicoEdit.getTelefone()+"', " +
+                "EMAIL      = '"+tecnicoEdit.getEmail()+"', " +
+                "LOGIN      = '"+tecnicoEdit.getLogin()+"', " +
+                "SENHA      = '"+tecnicoEdit.getSenha()+"'  " +
+                "WHERE ID="+tecnicoEdit.getId()+";";
+        sqlite.executarSQL(sql);
+    }
 
+    public void editar(Gerente gerenteEdit) {
+        String sql =    "UPDATE PESSOAS" +
+                "SET NOME   = '"+gerenteEdit.getNome()+"',  " +
+                "TELEFONE   = '"+gerenteEdit.getTelefone()+"', " +
+                "EMAIL      = '"+gerenteEdit.getEmail()+"', " +
+                "LOGIN      = '"+gerenteEdit.getLogin()+"', " +
+                "SENHA      = '"+gerenteEdit.getSenha()+"'  " +
+                "WHERE ID="+gerenteEdit.getId()+";";
+        sqlite.executarSQL(sql);
+    }
+//------------------------------------------------------------------------------------------------------
+// PEGAR TODOS OS CLIENTES --PEGAR TODOS OS CLIENTES --PEGAR TODOS OS CLIENTES --PEGAR TODOS OS CLIENTES
+    public ArrayList<Cliente> getAllCliente(int tipoDeUsuario) {
+        String sql = "SELECT * FROM PESSOAS WHERE TIPO_USUARIO = "+tipoDeUsuario;
+        ArrayList<Cliente> listaCliente = new ArrayList<>();
+        Cliente retornoCliente = new Cliente();
+        ResultSet rs = sqlite.querySql(sql);
+        try {
+            while (rs.next()) {
+                int id= rs.getInt("ID");
+                int tipoUsuario = rs.getInt("TIPO_USUARIO");
+                String  nome = rs.getString("NOME");
+                String  telefone = rs.getString("TELEFONE");
+                String  email = rs.getString("EMAIL");
+                String  loginn = rs.getString("LOGIN");
+                String  senhaa = rs.getString("SENHA");
+                retornoCliente = new Cliente(id,nome,telefone,email,loginn,senhaa);
+                listaCliente.add(retornoCliente);
+            }
+        }
+        catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+            return listaCliente;
+    }
+//------------------------------------------------------------------------------------------------------
+// PEGAR TODOS OS TECNICOS PEGAR TODOS OS TECNICOS PEGAR TODOS OS TECNICOS PEGAR TODOS OS TECNICOS
+    public ArrayList<Tecnico> getAllTecnico(int tipoDeUsuario) {
+        String sql = "SELECT * FROM PESSOAS WHERE TIPO_USUARIO = "+tipoDeUsuario;
+        ArrayList<Tecnico> listaTecnico= new ArrayList<>();
+        Tecnico retornoTecnico= new Tecnico();
+        ResultSet rs = sqlite.querySql(sql);
+        try {
+            while (rs.next()) {
+                int id= rs.getInt("ID");
+                int tipoUsuario = rs.getInt("TIPO_USUARIO");
+                String  nome = rs.getString("NOME");
+                String  telefone = rs.getString("TELEFONE");
+                String  email = rs.getString("EMAIL");
+                String  loginn = rs.getString("LOGIN");
+                String  senhaa = rs.getString("SENHA");
+                retornoTecnico = new Tecnico(id,nome,telefone,email,loginn,senhaa);
+                listaTecnico.add(retornoTecnico);
+            }
+        }
+        catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        return listaTecnico;
+    }
+//------------------------------------------------------------------------------------------------------
+// PEGAR TODOS OS GERENTES PEGAR TODOS OS GERENTES PEGAR TODOS OS GERENTES PEGAR TODOS OS GERENTES
+    public ArrayList<Gerente> getAllGerente(int tipoDeUsuario) {
+        String sql = "SELECT * FROM PESSOAS WHERE TIPO_USUARIO = "+tipoDeUsuario;
+        ArrayList<Gerente> listaGerente = new ArrayList<>();
+        Gerente retornoGerente = new Gerente();
+        ResultSet rs = sqlite.querySql(sql);
+        try {
+            while (rs.next()) {
+                int id= rs.getInt("ID");
+                int tipoUsuario = rs.getInt("TIPO_USUARIO");
+                String  nome = rs.getString("NOME");
+                String  telefone = rs.getString("TELEFONE");
+                String  email = rs.getString("EMAIL");
+                String  loginn = rs.getString("LOGIN");
+                String  senhaa = rs.getString("SENHA");
+                retornoGerente = new Gerente(id,nome,telefone,email,loginn,senhaa);
+                listaGerente.add(retornoGerente);
+            }
+        }
+        catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        return listaGerente;
+    }
+//------------------------------------------------------------------------------------------------------
+// VERIFICAR LOGIN VERIFICAR LOGIN VERIFICAR LOGIN VERIFICAR LOGIN VERIFICAR LOGIN VERIFICAR LOGIN VERIFICAR LOGIN
     public Object verificaLogin(String login, String senha){
         String sql = "SELECT * FROM PESSOAS WHERE LOGIN == '"+login+"' AND SENHA == '"+senha+"'";
         ResultSet rs= sqlite.querySql(sql);

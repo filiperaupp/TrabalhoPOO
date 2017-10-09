@@ -15,12 +15,16 @@ public class Cliente extends Pessoa {
     }
 
     public Cliente(int id, String nome, String telefone, String email, String login, String senha) {
-        super(identificador, id, nome, telefone, email, login, senha);
+        super(identificador,id, nome, telefone, email, login, senha);
+    }
+
+    public Cliente(String nome, String telefone, String email, String login, String senha) {
+        super(identificador, nome, telefone, email, login, senha);
     }
 
     private static int identificador=100;
 
-    public static int getIdentificador() {
+    public int getIdentificador() {
         return identificador;
     }
 }

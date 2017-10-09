@@ -15,7 +15,11 @@ public class Tecnico extends Pessoa {
         super(identificador, id, nome, telefone, email, login, senha);
     }
 
-    public static int getIdentificador() {
+    public Tecnico(String nome, String telefone, String email, String login, String senha) {
+        super(identificador, nome, telefone, email, login, senha);
+    }
+
+    public int getIdentificador() {
         return identificador;
     }
 }

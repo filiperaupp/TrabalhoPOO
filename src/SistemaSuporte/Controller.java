@@ -64,8 +64,9 @@ public class Controller {
         } while (operacao!=4);
     }
     public static void telaTecnico(Object pessoaLogada){
-        //System.out.println("Técnico "+retornoLogin.getNome()+" logado no sistema.");
         int operacaoT = 0;
+        Tecnico tecnicoLogado = (Tecnico) pessoaLogada;
+        System.out.println("**Técnico "+((Tecnico) pessoaLogada).getNome()+" logado no sistema.**");
         System.out.println("Escolha uma opção: ");
         System.out.println("1-Mostrar Chamados Pendentes");
         System.out.println("2-Finalizar Chamado");
@@ -81,9 +82,41 @@ public class Controller {
         }
     }
     public static void telaGerente(Object pessoaLogada){
-        int operacao=0;
-        Gerente gerenteLogado = (Gerente) pessoaLogada;
-        System.out.println("Gerente "+gerenteLogado.getNome()+" logado no sistema.");
+        int ope = 0;
+        do {
+            Gerente gerenteLogado = (Gerente) pessoaLogada;
+            System.out.println("**Gerente " + gerenteLogado.getNome() + " logado no sistema.**");
+            System.out.println("-- Menu Gerente --");
+            System.out.println("1- Cadastrar novo Gerente/Ténico/Cliente");
+            System.out.println("2- Atualizar dados de Gerente/Ténico/Cliente");
+            System.out.println("3- Excluir Ténico/Cliente");
+            System.out.println("4- Alterar Ténico responsável por um Chamado");
+            System.out.println("5- Voltar");
+            ope = tc.nextInt();
+            switch (ope) {
+                case 1: {
+                    gerenteLogado.cadastrarUsuario();
+                    break;
+                }
+                case 2: {
+                    gerenteLogado.editarUsuario();
+                    break;
+                }
+                case 3: {
+                    gerenteLogado.excluir();
+                    break;
+                }
+                case 4:{
+                    break;
+                }
+                case 5:{
+                    break;
+                }
+                default: {
+                    System.out.println("Operação inválida.");
+                }
+            }
+        } while (ope!=5);
     }
 
 }

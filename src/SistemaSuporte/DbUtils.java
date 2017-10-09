@@ -11,7 +11,7 @@ public class DbUtils {
 
     public void criarDB() {
         String sql = "CREATE TABLE PESSOAS" +
-                "(ID                INTEGER NOT NULL PRIMARY KEY," +
+                "(ID                INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT," +
                 " TIPO_USUARIO      INTEGER NOT NULL, " +
                 " NOME              TEXT    NOT NULL, " +
                 " TELEFONE          TEXT    ,         " +
@@ -20,7 +20,7 @@ public class DbUtils {
                 " SENHA             TEXT    NOT NULL  " +
                 ");"                                    +
                 "CREATE TABLE CHAMADOS"+
-                "(iD                INTEGER NOT NULL PRIMARY KEY," +
+                "(ID                INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT," +
                 " ID_CLIENTE        INTEGER,          " +
                 " ID_TECNICO        INTEGER,          " +
                 " DESCRICAO         TEXT,             " +
@@ -29,8 +29,8 @@ public class DbUtils {
                 " PRIORIDADE        TEXT);";
 
         sqlite.executarSQL(sql);
-
     }
+
 
 
     public void dropTable() {

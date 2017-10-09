@@ -11,6 +11,10 @@ public class Chamado {
     private String horaFim;
     private int prioridade; // 1- baixa 2- moderada, 3-alta, 4-urgente
 
+    public Chamado(){
+
+    }
+
     public Chamado(int id, int idCliente, int idTecnico, String descricao, String dataFim, String horaFim, int prioridade) {
         this.id = id;
         this.idCliente = idCliente;
