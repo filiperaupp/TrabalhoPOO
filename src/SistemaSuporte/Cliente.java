@@ -1,5 +1,8 @@
 package SistemaSuporte;
 
+import java.util.ArrayList;
+import java.util.Scanner;
+
 /**
  * Created by filip on 25/09/2017.
  */
@@ -9,6 +12,13 @@ public class Cliente extends Pessoa {
     // sistema deve atribuir as tarefas geralmente aos técnicos com menos chamados em aberto.
     // consulta,edita,cancela chamados
     // pode ver apenas os seus chamados//
+    private static int identificador=100;
+    Scanner tc = new Scanner(System.in);
+    ChamadosDao daoChamado = new ChamadosDao();
+
+    public int getIdentificador() {
+        return identificador;
+    }
 
     public Cliente() {
 
@@ -22,9 +32,46 @@ public class Cliente extends Pessoa {
         super(identificador, nome, telefone, email, login, senha);
     }
 
-    private static int identificador=100;
-
-    public int getIdentificador() {
-        return identificador;
+    public void abrirChamado(int idCliente) {
+        ArrayList<Tecnico> listaTecnicos = daoPessoa.getAllTecnico(200);
+        if (listaTecnicos==null) {
+            System.out.println("Não há tecnicos registrados.");
+        }else {
+            System.out.println("-- Criando Chamado");
+            Chamado chamado = new Chamado();
+            chamado.criaChamado(idCliente);
+            System.out.println("Chamado criado");
+        }
     }
+
+    public void editarChamado(int idCliente){
+        int escolheChamado=0;
+        Chamado chamado = new Chamado();
+        System.out.println("-- Editando Chamado");
+        System.out.println("Digite o id do chamado que deseja editar:  ");
+        chamado.mostraChamados(idCliente);
+        escolheChamado = tc.nextInt();
+        chamado = chamado.getByIdChamado(escolheChamado);
+        chamado.criaChamado(idCliente);
+        daoChamado.save(chamado);
+        System.out.println("Chamado editado.");
+    }
+
+    public void mostrarTodosChamados(int idCliente){
+        Chamado chamado = new Chamado();
+        chamado.mostraChamados(idCliente);
+    }
+
+    public void cancelarChamado(int idCliente){
+        int escolheChamado=0;
+        Chamado chamado = new Chamado();
+        System.out.println("-- Cancelando Chamado");
+        System.out.println("Digite o id do chamado que deseja excluir:  ");
+        chamado.mostraChamados(idCliente);
+        escolheChamado = tc.nextInt();
+        chamado = chamado.getByIdChamado(escolheChamado);
+        daoChamado.delete(chamado);
+    }
+
+
 }

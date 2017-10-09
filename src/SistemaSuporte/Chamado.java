@@ -1,6 +1,7 @@
 package SistemaSuporte;
 
-import java.util.Date;
+import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Chamado {
     private int id;
@@ -10,11 +11,21 @@ public class Chamado {
     private String dataFim;
     private String horaFim;
     private int prioridade; // 1- baixa 2- moderada, 3-alta, 4-urgente
-
+    Scanner tc = new Scanner(System.in);
+    ChamadosDao daoChamado = new ChamadosDao();
     public Chamado(){
 
     }
-
+    // CONSTRUTOR PARA SALVAR
+    public Chamado(int idCliente, int idTecnico, String descricao, String dataFim, String horaFim, int prioridade) {
+        this.idCliente = idCliente;
+        this.idTecnico = idTecnico;
+        this.descricao = descricao;
+        this.dataFim = dataFim;
+        this.horaFim = horaFim;
+        this.prioridade = prioridade;
+    }
+    // CONSTRUTOR PARA RETORNO/CONSULTA
     public Chamado(int id, int idCliente, int idTecnico, String descricao, String dataFim, String horaFim, int prioridade) {
         this.id = id;
         this.idCliente = idCliente;
@@ -77,21 +88,44 @@ public class Chamado {
         this.prioridade = nivelPrioridade;
     }
 
-    public boolean criaChamado(){
-        //Cria chamado
+    public boolean criaChamado(int idOfCliente){
+        System.out.println("Descrição do problema: ");
+        this.descricao = tc.nextLine();
+        System.out.println();
+        System.out.println("Digite o número correspondente à prioridade:");
+        System.out.println("(1) - Baixa | (2) - Moderada| (3) - Alta | (4) - Urgente ");
+        this.prioridade = tc.nextInt();
+        this.dataFim = null;
+        this.horaFim = null;
+        this.idCliente = idOfCliente;
         return true;
-    };
-
-    public Chamado procuraChamado(Chamado chamado,String nome){
-        //procura chamado pelo nome
-        return chamado;
     }
+
+    public ArrayList<Chamado> mostraChamados(int idCliente) {
+        ArrayList<Chamado> todosChamados = new ArrayList<>();
+        todosChamados = daoChamado.list(idCliente);
+        for (Chamado chamado: todosChamados) {
+            System.out.println("--> ID: "+chamado.getId());
+            System.out.println("Descroção: "+chamado.getDescricao());
+            System.out.println("Prioridade: "+chamado.getPrioridade());
+        }
+        return todosChamados;
+    }
+
+    public Chamado getByIdChamado(int id) {
+        Chamado retornoChamado = new Chamado();
+        ArrayList<Chamado> todosChamados = new ArrayList<>();
+        for (Chamado chamado: todosChamados) {
+            if (chamado.getId()==id) {
+                retornoChamado = chamado;
+            }
+        }
+        return retornoChamado;
+    }
+
 
     public void editarChamado(){
 
     }
 
-    public void cancelarChamado(){
-
-    }
 }
