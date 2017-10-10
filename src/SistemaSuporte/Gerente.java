@@ -175,4 +175,19 @@ public class Gerente extends Pessoa {
             }
         }while (ope!=3);
     }
+//-------------------------------------------------------------------------------------------------------
+    public void alterarTenico(){
+        Chamado chamado = new Chamado();
+        Tecnico tecnico = new Tecnico();
+        int escolhaChamado = 0;
+        int escolheTecnico = 0;
+        System.out.println("-- Digite o ID do chamado que deseja alterar a responsabilidade tecnica: ");
+        chamado.mostraTodosChamados();
+        escolhaChamado = tc.nextInt();
+        System.out.println("-- Digite o ID do técnico que irá receber a tarefa: ");
+        tecnico.mostrarTodosTecnicos();
+        escolheTecnico = tc.nextInt();
+        chamado.editarTecnico(escolhaChamado,escolheTecnico);
+        System.out.println("Tecnico alterado");
+    }
 }

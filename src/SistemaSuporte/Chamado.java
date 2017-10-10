@@ -88,9 +88,7 @@ public class Chamado {
         this.prioridade = nivelPrioridade;
     }
 
-    public void criaChamado(int idOfCliente){
-        ChamadosDao chamado = new ChamadosDao();
-        Tecnico t = new Tecnico();
+    public void criaChamado(int idOfCliente, int idOfTecnico){
         System.out.println("Descrição do problema: ");
         this.descricao = tc.nextLine();
         System.out.println();
@@ -100,19 +98,42 @@ public class Chamado {
         this.dataFim = null;
         this.horaFim = null;
         this.idCliente = idOfCliente;
-        this.idTecnico = 8;
+        this.idTecnico = idOfTecnico;
     }
 
-    public ArrayList<Chamado> mostraChamados(int idCliente) {
-        ArrayList<Chamado> todosChamados = new ArrayList<>();
-        todosChamados = daoChamado.list(idCliente);
+    public void editarChamado(){
+        System.out.println("Descrição do problema: ");
+        this.descricao = tc.nextLine();
+        System.out.println();
+        System.out.println("Digite o número correspondente à prioridade:");
+        System.out.println("(1) - Baixa | (2) - Moderada| (3) - Alta | (4) - Urgente ");
+        this.prioridade = tc.nextInt();
+    }
+
+//------ mostra chamados por cliente ----------------------------------------------------
+    public void mostraChamados(int idCliente) {
+        ArrayList<Chamado> chamadosDoCliente = daoChamado.list(idCliente);
+        for (Chamado chamado: chamadosDoCliente) {
+            System.out.println("--> ID: "+chamado.getId());
+            System.out.println("Descroção: "+chamado.getDescricao());
+            System.out.println("Prioridade: "+chamado.getPrioridade());
+        }
+    }
+
+///------ mostra todos os chamados ----------------------------------------------------
+    public void mostraTodosChamados(){
+        ArrayList<Chamado> todosChamados = daoChamado.getAllChamados();
         for (Chamado chamado: todosChamados) {
             System.out.println("--> ID: "+chamado.getId());
             System.out.println("Descroção: "+chamado.getDescricao());
             System.out.println("Prioridade: "+chamado.getPrioridade());
         }
-        return todosChamados;
     }
+//-------Editar responsabilidade tecnica -------------------------------------------------
+    public void editarTecnico(int idOfChamado, int idOfTecnico){
+        daoChamado.editResponsability(idOfChamado,idOfTecnico);
+    }
+
 
     public Chamado getByIdChamado(int id) {
         Chamado retornoChamado = new Chamado();

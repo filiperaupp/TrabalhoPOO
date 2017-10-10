@@ -29,13 +29,49 @@ public class Tecnico extends Pessoa {
         return identificador;
     }
 
-    public int verificarChamadosPorTecnico(){
+//------ Mostra chamado dos Tecnicos -------------------------------------------------------------------------
+    public void chamadosTecnico(){
+
+    }
+
+//------------------------------------------------------------------------------------------------------------
+//------- Encontra o tecnico com Menos chamados ---------------------------------------------------
+    public int verificarMenosTarefas() {
         // fazer um for onde compara o id dos tecnicos com o registrado nos chamados
         // gravar o id do tecnico com menos chamados para atribuir a ele o novo chamado
         ArrayList<Chamado> listaChamados = daoChamado.getAllChamados();
         ArrayList<Tecnico> listaTenicos = daoPessoa.getAllTecnico(200);
+        boolean firstNumber = false;
+        int idTecnicoMenosChamados = 0;
+        int numeroDeChamados = 0;
         PessoaDao tecnico = new PessoaDao();
-        return tecnico.getTecMenos(); // ta no PessoaDAO, vai pegar o tec com menos chamados e já adc na hora que o chamado for criado..
 
+        for (Tecnico esseTecnico : listaTenicos) {
+            int contaChamadados = 0;
+            for (Chamado esseChamado : listaChamados) {
+                if (esseTecnico.getId() == esseChamado.getIdTecnico()) {
+                    contaChamadados++;
+                }
+            }
+            if (!firstNumber) {
+                idTecnicoMenosChamados = esseTecnico.getId();
+                numeroDeChamados = contaChamadados;
+                firstNumber = true;
+            } else {
+                if (contaChamadados < numeroDeChamados) {
+                    numeroDeChamados = contaChamadados;
+                    idTecnicoMenosChamados = esseTecnico.getId();
+                }
+            }
+        }
+        return idTecnicoMenosChamados;
+//        return tecnico.getTec(); // ta no PessoaDAO, vai pegar o tec com menos chamados e já adc na hora que o chamado for criado..
+    }
+//---------------------------------------------------------------------------------------------------------------------
+    public void mostrarTodosTecnicos() {
+        ArrayList<Tecnico> todosTecnicos = daoPessoa.getAllTecnico(200);
+        for (Tecnico tecnico: todosTecnicos) {
+            System.out.println("* ID: "+tecnico.getId()+"  Nome: "+tecnico.getNome());
+        }
     }
 }

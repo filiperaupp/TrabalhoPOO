@@ -38,40 +38,40 @@ public class Controller {
                     System.out.println("Operação inexistente.");
                 }
             }
-        } while (operacao!=4);
+        } while (operacao!=5);
     }
     public static void telaTecnico(Object pessoaLogada){
         int operacaoT = 0;
-        Tecnico tecnicoLogado = (Tecnico) pessoaLogada;
-        System.out.println("** Técnico "+((Tecnico) pessoaLogada).getNome()+" logado no sistema.**");
-        System.out.println("-- Menu Técnico --");
-        System.out.println("1- Mostrar Chamados Pendentes");
-        System.out.println("2- Finalizar Chamado");
-        System.out.println("3- Tarefas realizadas");
-        System.out.println("4- Sair da conta");
-        operacaoT = tc.nextInt();
-        switch (operacaoT){
-            case 1: {
+        do {
+            Tecnico tecnicoLogado = (Tecnico) pessoaLogada;
+            System.out.println("** Técnico " + ((Tecnico) pessoaLogada).getNome() + " logado no sistema.**");
+            System.out.println("-- Menu Técnico --");
+            System.out.println("1- Mostrar Chamados Pendentes");
+            System.out.println("2- Finalizar Chamado");
+            System.out.println("3- Tarefas realizadas");
+            System.out.println("4- Sair da conta");
+            operacaoT = tc.nextInt();
+            switch (operacaoT) {
+                case 1: {
+                    tecnicoLogado.chamadosTecnico();
+                    break;
+                }
+                case 2: {
 
-                break;
-            }
-            case 2: {
+                    break;
+                }
+                case 3: {
 
-                break;
+                    break;
+                }
+                case 4: {
+                    break;
+                }
+                default: {
+                    System.out.println("Operação inexistente");
+                }
             }
-            case 3: {
-
-                break;
-            }
-            case 4: {
-                break;
-            }
-            default: {
-                System.out.println("Operação inexistente");
-            }
-
-
-        }
+        }while (operacaoT!=4);
     }
     public static void telaGerente(Object pessoaLogada){
         int ope = 0;
@@ -99,6 +99,7 @@ public class Controller {
                     break;
                 }
                 case 4:{
+                    gerenteLogado.alterarTenico();
                     break;
                 }
                 case 5:{

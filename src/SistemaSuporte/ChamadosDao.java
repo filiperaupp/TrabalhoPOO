@@ -12,9 +12,8 @@ public class ChamadosDao {
     public ChamadosDao() {sqlite = new DbHelper();}
 // SAVE SAVE SAVE SAVE SAVE SAVE SAVE SAVE SAVE SAVE SAVE SAVE SAVE SAVE SAVE SAVE SAVE SAVE SAVE SAVE
     public void save(Chamado chamado){
-        String sql= "INSERT INTO CHAMADOS (ID, ID_CLIENTE, ID_TECNICO, DESCRICAO, DATA_FIM, HORA_FIM, PRIORIDADE) " +
-                "VALUES ("+chamado.getId()+", " +
-                ""+chamado.getIdCliente()+", " +
+        String sql= "INSERT INTO CHAMADOS (ID_CLIENTE, ID_TECNICO, DESCRICAO, DATA_FIM, HORA_FIM, PRIORIDADE) " +
+                "VALUES ("+chamado.getIdCliente()+",  " +
                 ""+chamado.getIdTecnico()+", " +
                 "'"+chamado.getDescricao()+"', " +
                 "'"+chamado.getDataFim()+"', " +
@@ -22,7 +21,7 @@ public class ChamadosDao {
                 ""+chamado.getPrioridade()+");";
         sqlite.executarSQL(sql);
     }
-
+// -------- Edição simples feita pelo cliente ------------------------------------------------------------------
     public void edit(Chamado chamadoEdit){
         String sql = "UPDATE CHAMADOS " +
                 "SET DESCRICAO= '"+chamadoEdit.getDescricao()+"'," +
@@ -31,12 +30,20 @@ public class ChamadosDao {
         sqlite.executarSQL(sql);
     }
 //------------------------------------------------------------------------------------------------------------
+// --------------- Altera o tecnico responsável --------------------------------------------------------------
+    public void editResponsability(int idOfChamado, int idOfTecnico){
+        String sql = "UPDATE CHAMADOS " +
+                "SET ID_TECNICO= "+idOfTecnico+" " +
+                "WHERE ID= "+idOfChamado+";";
+        sqlite.executarSQL(sql);
+    }
+//------------------------------------------------------------------------------------------------------------
 // DELETE DELETE DELETE DELETE DELETE DELETE DELETE DELETE DELETE DELETE DELETE DELETE DELETE DELETE DELETE
     public void delete(Chamado chamado){
         String sql = "DELETE FROM CHAMADOS WHERE ID="+chamado.getId()+";";
         sqlite.executarSQL(sql);
     }
-
+//---------- Lista chamados por cliente ----------------------------------------------------------------------
     public ArrayList<Chamado> list (int idOfCliente){
         ArrayList<Chamado> lista= new ArrayList<>();
         String sql= "SELECT * FROM CHAMADOS WHERE ID_CLIENTE ="+idOfCliente+";";
@@ -71,6 +78,8 @@ public class ChamadosDao {
 
         }
     }
+//------------------------------------------------------------------------------------------------------------
+//------ Pega todos os chamados ------------------------------------------------------------------------------
     public ArrayList<Chamado> getAllChamados (){
         ArrayList<Chamado> lista= new ArrayList<>();
         String sql= "SELECT * FROM CHAMADOS";
@@ -90,12 +99,7 @@ public class ChamadosDao {
         }catch (Exception e) {
             System.out.println(e.getMessage());
         }
-        if(lista.isEmpty()) {
-            return null;
-        }else {
-            return lista;
-
-        }
+        return lista;
 
 
     }

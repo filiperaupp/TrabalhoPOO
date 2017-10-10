@@ -37,9 +37,11 @@ public class Cliente extends Pessoa {
         if (listaTecnicos==null) {
             System.out.println("Não há tecnicos registrados.");
         }else {
+            Tecnico tecnicoRegistro = new Tecnico();
             System.out.println("-- Criando Chamado");
             Chamado chamado = new Chamado();
-            chamado.criaChamado(idCliente);
+            chamado.criaChamado(idCliente,tecnicoRegistro.verificarMenosTarefas());
+            daoChamado.save(chamado);
             System.out.println("Chamado criado");
         }
     }
@@ -52,7 +54,7 @@ public class Cliente extends Pessoa {
         chamado.mostraChamados(idCliente);
         escolhaChamado = tc.nextInt();
         chamado = chamado.getByIdChamado(escolhaChamado);
-        chamado.criaChamado(idCliente);
+        chamado.editarChamado();
         daoChamado.edit(chamado);
         System.out.println("Chamado editado.");
     }

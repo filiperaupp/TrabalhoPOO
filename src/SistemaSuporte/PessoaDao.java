@@ -171,7 +171,12 @@ public class PessoaDao {
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
-        return listaTecnico;
+        if (listaTecnico.isEmpty()) {
+            return null;
+        }
+        else {
+            return listaTecnico;
+        }
     }
 
     //------------------------------------------------------------------------------------------------------
@@ -278,18 +283,18 @@ public class PessoaDao {
     }
 
     //////////////// PROCURA TECNICO MENOS CHAMADOS ///////////////////////////////////////////
-    public int getTecMenos(){
-        int n = 0;
-        String sql = "SELECT CHAMADOS.ID_TECNICO AS TECNICO, COUNT(CHAMADOS.ID_TECNICO) AS QUANTIDADE FROM CHAMADOS, PESSOAS AS P WHERE P.TIPO_USUARIO=200 GROUP BY(TECNICO) ORDER BY (QUANTIDADE) ASC;";
-        ResultSet rs= sqlite.querySql(sql);
-        try {
-            while (rs.next()){
-                int id = rs.getInt("TECNICO");
-                return id;
-            }
-        }catch (Exception e) {
-            System.out.println(e.getMessage());
-        }
-        return -1;
-    }
+//    public int getTecMenos(){
+//        int n = 0;
+//        String sql = "SELECT CHAMADOS.ID_TECNICO AS TECNICO, COUNT(CHAMADOS.ID_TECNICO) AS QUANTIDADE FROM CHAMADOS, PESSOAS AS P WHERE P.TIPO_USUARIO=200 GROUP BY(TECNICO) ORDER BY (QUANTIDADE) ASC;";
+//        ResultSet rs= sqlite.querySql(sql);
+//        try {
+//            while (rs.next()){
+//                int id = rs.getInt("TECNICO");
+//                return id;
+//            }
+//        }catch (Exception e) {
+//            System.out.println(e.getMessage());
+//        }
+//        return -1;
+//    }
 }
