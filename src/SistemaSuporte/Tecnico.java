@@ -29,11 +29,13 @@ public class Tecnico extends Pessoa {
         return identificador;
     }
 
-    public void verificarChamadosPorTenico(){
-        // fazer um for onde compra o id dos tenicos com o registrado nos chamados
-        // gravar o id do tenico com menos chamados para atribuir a ele o novo chamado
+    public int verificarChamadosPorTecnico(){
+        // fazer um for onde compara o id dos tecnicos com o registrado nos chamados
+        // gravar o id do tecnico com menos chamados para atribuir a ele o novo chamado
         ArrayList<Chamado> listaChamados = daoChamado.getAllChamados();
         ArrayList<Tecnico> listaTenicos = daoPessoa.getAllTecnico(200);
+        PessoaDao tecnico = new PessoaDao();
+        return tecnico.getTecMenos(); // ta no PessoaDAO, vai pegar o tec com menos chamados e já adc na hora que o chamado for criado..
 
     }
 }

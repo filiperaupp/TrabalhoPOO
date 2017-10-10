@@ -89,6 +89,8 @@ public class Chamado {
     }
 
     public boolean criaChamado(int idOfCliente){
+        ChamadosDao chamado = new ChamadosDao();
+        Tecnico t = new Tecnico();
         System.out.println("Descrição do problema: ");
         this.descricao = tc.nextLine();
         System.out.println();
@@ -98,6 +100,8 @@ public class Chamado {
         this.dataFim = null;
         this.horaFim = null;
         this.idCliente = idOfCliente;
+        this.idTecnico = t.verificarChamadosPorTecnico();
+        chamado.save(this);
         return true;
     }
 
@@ -121,11 +125,6 @@ public class Chamado {
             }
         }
         return retornoChamado;
-    }
-
-
-    public void editarChamado(){
-
     }
 
 }

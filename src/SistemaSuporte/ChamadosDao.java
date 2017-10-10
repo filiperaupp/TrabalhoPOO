@@ -16,7 +16,7 @@ public class ChamadosDao {
                 "VALUES ("+chamado.getId()+", " +
                 ""+chamado.getIdCliente()+", " +
                 ""+chamado.getIdTecnico()+", " +
-                ""+chamado.getDescricao()+", " +
+                "'"+chamado.getDescricao()+"', " +
                 "'"+chamado.getDataFim()+"', " +
                 "'"+chamado.getHoraFim()+"', " +
                 ""+chamado.getPrioridade()+");";
@@ -34,7 +34,7 @@ public class ChamadosDao {
         ResultSet rs= sqlite.querySql(sql);
         try {
             while (rs.next()){
-                int id= rs.getInt("ID");
+                int id = rs.getInt("ID");
                 int idCliente= rs.getInt("ID_CLIENTE");
                 int idTecnico= rs.getInt("ID_TECNICO");
                 String  descricao = rs.getString("DESCRICAO");

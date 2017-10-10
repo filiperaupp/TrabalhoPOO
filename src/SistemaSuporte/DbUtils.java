@@ -21,12 +21,14 @@ public class DbUtils {
                 ");"                                    +
                 "CREATE TABLE CHAMADOS"+
                 "(ID                INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT," +
-                " ID_CLIENTE        INTEGER,          " +
-                " ID_TECNICO        INTEGER,          " +
+                " ID_CLIENTE        INTEGER NOT NULL,          " +
+                " ID_TECNICO        INTEGER NOT NULL,          " +
                 " DESCRICAO         TEXT,             " +
                 " DATA_FIM          TEXT,             " +
                 " HORA_FIM          TEXT,             " +
-                " PRIORIDADE        TEXT);";
+                " PRIORIDADE        TEXT," +
+                "FOREIGN KEY (ID_CLIENTE) REFERENCES PESSOAS (ID)," +
+                "FOREIGN KEY (ID_TECNICO) REFERENCES PESSOAS (ID));";
 
         sqlite.executarSQL(sql);
     }
