@@ -8,6 +8,7 @@ public class Controller {
         int operacao=0;
         Cliente clienteLogado = (Cliente) pessoaLogada;
         System.out.println("** Cliente "+clienteLogado.getNome()+" logado no sistema.");
+        int numeroIdCliente = clienteLogado.getId();
         do {
             System.out.println("-- Menu Cliente -- ");
             System.out.println("1- Abrir Chamado");
@@ -18,19 +19,19 @@ public class Controller {
             operacao = tc.nextInt();
             switch(operacao){
                 case 1: {
-                    clienteLogado.abrirChamado(clienteLogado.getId());
+                    clienteLogado.abrirChamado(numeroIdCliente);
                     break;
                 }
                 case 2: {
-                    clienteLogado.editarChamado(clienteLogado.getId());
+                    clienteLogado.editarChamado(numeroIdCliente);
                     break;
                 }
                 case 3: {
-                    clienteLogado.cancelarChamado(clienteLogado.getId());
+                    clienteLogado.cancelarChamado(numeroIdCliente);
                     break;
                 }
                 case 4: {
-                    clienteLogado.mostrarTodosChamados(clienteLogado.getId());
+                    clienteLogado.mostrarTodosChamados(numeroIdCliente);
                     break;
                 }
                 default:{

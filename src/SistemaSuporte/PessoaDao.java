@@ -24,7 +24,7 @@ public class PessoaDao {
                 String sql = "INSERT INTO PESSOAS (TIPO_USUARIO, NOME, TELEFONE, EMAIL, LOGIN, SENHA) " +
                         "VALUES (" + c.getTipoUsuario() + "," +
                         "'" + c.getNome() + "', " +
-                        "" + c.getTelefone() + ", " +
+                        "'" + c.getTelefone() + "', " +
                         "'" + c.getEmail() + "', " +
                         "'" + c.getLogin() + "', " +
                         "'" + c.getSenha() + "' );";
@@ -48,7 +48,7 @@ public class PessoaDao {
                 String sql = "INSERT INTO PESSOAS (TIPO_USUARIO, NOME, TELEFONE, EMAIL, LOGIN, SENHA) " +
                         "VALUES (" + t.getTipoUsuario() + "," +
                         "'" + t.getNome() + "', " +
-                        "" + t.getTelefone() + ", " +
+                        "'" + t.getTelefone() + "', " +
                         "'" + t.getEmail() + "', " +
                         "'" + t.getLogin() + "', " +
                         "'" + t.getSenha() + "' );";
@@ -92,18 +92,18 @@ public class PessoaDao {
                 "SENHA = '" + clienteEdit.getSenha() + "'  " +
                 "WHERE ID=" + clienteEdit.getId() + ";";
         sqlite.executarSQL(sql);
-//        System.out.println( "ID = " + clienteEdit.getId() );
-//        System.out.println( "TIPO USUÁRIO = " + clienteEdit.getIdentificador());
-//        System.out.println( "NOME = " + clienteEdit.getNome() );
-//        System.out.println( "TELEFONE = " + clienteEdit.getTelefone() );
-//        System.out.println( "EMAIL = " + clienteEdit.getEmail() );
-//        System.out.println( "LOGIN = " + clienteEdit.getLogin() );
-//        System.out.println( "SENHA = " + clienteEdit.getEmail() );
-//        System.out.println();
+        System.out.println( "ID = " + clienteEdit.getId() );
+        System.out.println( "TIPO USUÁRIO = " + clienteEdit.getIdentificador());
+        System.out.println( "NOME = " + clienteEdit.getNome() );
+        System.out.println( "TELEFONE = " + clienteEdit.getTelefone() );
+        System.out.println( "EMAIL = " + clienteEdit.getEmail() );
+        System.out.println( "LOGIN = " + clienteEdit.getLogin() );
+        System.out.println( "SENHA = " + clienteEdit.getEmail() );
+        System.out.println();
     }
 
     public void editar(Tecnico tecnicoEdit) {
-        String sql = "UPDATE PESSOAS" +
+        String sql = "UPDATE PESSOAS " +
                 "SET NOME   = '" + tecnicoEdit.getNome() + "',  " +
                 "TELEFONE   = '" + tecnicoEdit.getTelefone() + "', " +
                 "EMAIL      = '" + tecnicoEdit.getEmail() + "', " +
@@ -114,7 +114,7 @@ public class PessoaDao {
     }
 
     public void editar(Gerente gerenteEdit) {
-        String sql = "UPDATE PESSOAS" +
+        String sql = "UPDATE PESSOAS " +
                 "SET NOME   = '" + gerenteEdit.getNome() + "',  " +
                 "TELEFONE   = '" + gerenteEdit.getTelefone() + "', " +
                 "EMAIL      = '" + gerenteEdit.getEmail() + "', " +

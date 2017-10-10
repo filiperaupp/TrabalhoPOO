@@ -53,7 +53,7 @@ public class Cliente extends Pessoa {
         escolheChamado = tc.nextInt();
         chamado = chamado.getByIdChamado(escolheChamado);
         chamado.criaChamado(idCliente);
-        daoChamado.save(chamado);
+        daoChamado.edit(chamado);
         System.out.println("Chamado editado.");
     }
 

@@ -87,7 +87,6 @@ public class Pessoa {
 
     public void cadastrar(int identificador){
         Scanner tc = new Scanner (System.in);
-        System.out.println("Cadastrando Usuário...");
         System.out.println("Nome: ");
         this.nome = tc.next();
         System.out.println("Telefone: ");

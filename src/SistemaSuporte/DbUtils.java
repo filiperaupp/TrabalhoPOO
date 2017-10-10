@@ -26,9 +26,10 @@ public class DbUtils {
                 " DESCRICAO         TEXT,             " +
                 " DATA_FIM          TEXT,             " +
                 " HORA_FIM          TEXT,             " +
-                " PRIORIDADE        TEXT," +
-                "FOREIGN KEY (ID_CLIENTE) REFERENCES PESSOAS (ID)," +
-                "FOREIGN KEY (ID_TECNICO) REFERENCES PESSOAS (ID));";
+                " PRIORIDADE        TEXT);";
+
+                //"FOREIGN KEY (ID_CLIENTE) REFERENCES PESSOAS (ID)," +
+                //"FOREIGN KEY (ID_TECNICO) REFERENCES PESSOAS (ID));";
 
         sqlite.executarSQL(sql);
     }

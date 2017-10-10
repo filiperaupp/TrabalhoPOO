@@ -10,7 +10,7 @@ public class ChamadosDao {
 
     DbHelper sqlite;
     public ChamadosDao() {sqlite = new DbHelper();}
-
+// SAVE SAVE SAVE SAVE SAVE SAVE SAVE SAVE SAVE SAVE SAVE SAVE SAVE SAVE SAVE SAVE SAVE SAVE SAVE SAVE
     public void save(Chamado chamado){
         String sql= "INSERT INTO CHAMADOS (ID, ID_CLIENTE, ID_TECNICO, DESCRICAO, DATA_FIM, HORA_FIM, PRIORIDADE) " +
                 "VALUES ("+chamado.getId()+", " +
@@ -23,6 +23,14 @@ public class ChamadosDao {
         sqlite.executarSQL(sql);
     }
 
+    public void edit(Chamado chamadoEdit){
+        String sql = "UPDATE CHAMADOS " +
+                "SET DESCRICAO= '"+chamadoEdit.getDescricao()+"'," +
+                "PRIORIDADE= '"+chamadoEdit.getPrioridade()+"'," +
+                "WHERE ID=" +chamadoEdit.getId()+";";
+    }
+//------------------------------------------------------------------------------------------------------------
+// DELETE DELETE DELETE DELETE DELETE DELETE DELETE DELETE DELETE DELETE DELETE DELETE DELETE DELETE DELETE
     public void delete(Chamado chamado){
         String sql = "DELETE FROM CHAMADOS WHERE ID="+chamado.getId()+";";
         sqlite.executarSQL(sql);
@@ -30,7 +38,7 @@ public class ChamadosDao {
 
     public ArrayList<Chamado> list (int idOfCliente){
         ArrayList<Chamado> lista= new ArrayList<>();
-        String sql= "SELECT * FROM CHAMADOS WHERE ID_CLIENTE ="+idOfCliente+" AND DATA_FIM IS NULL;";
+        String sql= "SELECT * FROM CHAMADOS WHERE ID_CLIENTE ="+idOfCliente+";";
         ResultSet rs= sqlite.querySql(sql);
         try {
             while (rs.next()){
