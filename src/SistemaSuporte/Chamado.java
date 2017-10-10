@@ -88,7 +88,7 @@ public class Chamado {
         this.prioridade = nivelPrioridade;
     }
 
-    public boolean criaChamado(int idOfCliente){
+    public void criaChamado(int idOfCliente){
         ChamadosDao chamado = new ChamadosDao();
         Tecnico t = new Tecnico();
         System.out.println("Descrição do problema: ");
@@ -100,9 +100,7 @@ public class Chamado {
         this.dataFim = null;
         this.horaFim = null;
         this.idCliente = idOfCliente;
-        this.idTecnico = t.verificarChamadosPorTecnico();
-        chamado.save(this);
-        return true;
+        this.idTecnico = 8;
     }
 
     public ArrayList<Chamado> mostraChamados(int idCliente) {
@@ -118,12 +116,13 @@ public class Chamado {
 
     public Chamado getByIdChamado(int id) {
         Chamado retornoChamado = new Chamado();
-        ArrayList<Chamado> todosChamados = new ArrayList<>();
+        ArrayList<Chamado> todosChamados = daoChamado.getAllChamados();
         for (Chamado chamado: todosChamados) {
             if (chamado.getId()==id) {
                 retornoChamado = chamado;
             }
         }
+
         return retornoChamado;
     }
 

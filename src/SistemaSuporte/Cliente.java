@@ -45,13 +45,13 @@ public class Cliente extends Pessoa {
     }
 
     public void editarChamado(int idCliente){
-        int escolheChamado=0;
+        int escolhaChamado=0;
         Chamado chamado = new Chamado();
         System.out.println("-- Editando Chamado");
         System.out.println("Digite o id do chamado que deseja editar:  ");
         chamado.mostraChamados(idCliente);
-        escolheChamado = tc.nextInt();
-        chamado = chamado.getByIdChamado(escolheChamado);
+        escolhaChamado = tc.nextInt();
+        chamado = chamado.getByIdChamado(escolhaChamado);
         chamado.criaChamado(idCliente);
         daoChamado.edit(chamado);
         System.out.println("Chamado editado.");

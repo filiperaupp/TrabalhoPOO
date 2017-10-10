@@ -26,8 +26,9 @@ public class ChamadosDao {
     public void edit(Chamado chamadoEdit){
         String sql = "UPDATE CHAMADOS " +
                 "SET DESCRICAO= '"+chamadoEdit.getDescricao()+"'," +
-                "PRIORIDADE= '"+chamadoEdit.getPrioridade()+"'," +
+                "PRIORIDADE= '"+chamadoEdit.getPrioridade()+"' " +
                 "WHERE ID=" +chamadoEdit.getId()+";";
+        sqlite.executarSQL(sql);
     }
 //------------------------------------------------------------------------------------------------------------
 // DELETE DELETE DELETE DELETE DELETE DELETE DELETE DELETE DELETE DELETE DELETE DELETE DELETE DELETE DELETE
