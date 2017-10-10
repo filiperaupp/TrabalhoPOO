@@ -95,8 +95,8 @@ public class Chamado {
         System.out.println("Digite o número correspondente à prioridade:");
         System.out.println("(1) - Baixa | (2) - Moderada| (3) - Alta | (4) - Urgente ");
         this.prioridade = tc.nextInt();
-        this.dataFim = null;
-        this.horaFim = null;
+        this.dataFim = "em andamento";
+        this.horaFim = "em andamento";
         this.idCliente = idOfCliente;
         this.idTecnico = idOfTecnico;
     }
@@ -118,6 +118,13 @@ public class Chamado {
             System.out.println("Descroção: "+chamado.getDescricao());
             System.out.println("Prioridade: "+chamado.getPrioridade());
         }
+    }
+//----------------------------------------------------------------------------------------
+    public void finalizar(){
+        System.out.println("Data de finalização: ");
+        this.dataFim = tc.next();
+        System.out.println("Hora de finalização: ");
+        this.horaFim = tc.next();
     }
 
 ///------ mostra todos os chamados ----------------------------------------------------

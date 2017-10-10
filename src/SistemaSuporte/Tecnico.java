@@ -29,11 +29,48 @@ public class Tecnico extends Pessoa {
         return identificador;
     }
 
-//------ Mostra chamado dos Tecnicos -------------------------------------------------------------------------
-    public void chamadosTecnico(){
+//------ Mostra chamado PENDENTES dos Tecnicos -------------------------------------------------------------------------
+    public void chamadosPendentes(int idOfTecnico){
+        ArrayList<Chamado> meusChamados = daoChamado.listChamadosTecnico(idOfTecnico);
+        if (meusChamados==null) {
+            System.out.println("Sem chamados pendentes");
+        }
+        else {
+            for (int i=4;i>=1;i--) {
+                for (Chamado chamado : meusChamados) {
+                    if (chamado.getPrioridade()==i)
+                        System.out.println("--> ID: " + chamado.getId() + " |Descroção: " + chamado.getDescricao() + " |Prioridade: " + chamado.getPrioridade());
+                }
+            }
+        }
+    }
+//--------------------------------------------------------------------------------------------------------------------
+//------    Mostra chamado FINALIZADOS dos Tecnicos
+    public void chamdosFinalizados(int idOfTecnico){
+        ArrayList<Chamado> meusChamados = daoChamado.listChamadosFinalizados(idOfTecnico);
+        if (meusChamados==null) {
+            System.out.println("Sem chamados finalizados");
+        }
+        else {
+            for (Chamado chamado : meusChamados) {
+                System.out.println("--> ID: " + chamado.getId() + " |Descroção: " + chamado.getDescricao() + " |Prioridade: " + chamado.getPrioridade());
+                System.out.println("Data finalização: " + chamado.getDataFim() + " |Hora finalização: " + chamado.getHoraFim());
+            }
+        }
+    }
+//------------------------------------------------------------------------------------------------------------
+//----- Finalizar chamado ------------------------------------------------------------------------------------
+    public void finalizarChamado(int idOfTenico){
+        int escolhaChamado = 0;
+        Chamado chamado = new Chamado();
+        System.out.println("-- Digite o ID do chamdo que será finalizado: ");
+        chamadosPendentes(idOfTenico);
+        escolhaChamado = tc.nextInt();
+        chamado = chamado.getByIdChamado(escolhaChamado);
+        chamado.finalizar();
+        daoChamado.finalize(chamado);
 
     }
-
 //------------------------------------------------------------------------------------------------------------
 //------- Encontra o tecnico com Menos chamados ---------------------------------------------------
     public int verificarMenosTarefas() {

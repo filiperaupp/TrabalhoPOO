@@ -53,15 +53,15 @@ public class Controller {
             operacaoT = tc.nextInt();
             switch (operacaoT) {
                 case 1: {
-                    tecnicoLogado.chamadosTecnico();
+                    tecnicoLogado.chamadosPendentes(tecnicoLogado.getId());
                     break;
                 }
                 case 2: {
-
+                    tecnicoLogado.finalizarChamado(tecnicoLogado.getId());
                     break;
                 }
                 case 3: {
-
+                    tecnicoLogado.chamdosFinalizados(tecnicoLogado.getId());
                     break;
                 }
                 case 4: {
