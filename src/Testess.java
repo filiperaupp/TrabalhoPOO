@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Scanner;
 
@@ -6,8 +7,20 @@ import java.util.Scanner;
  */
 public class Testess {
         public static void main(String[] args) {
-            Scanner tc = new Scanner(System.in);
-            Calendar c = Calendar.getInstance();
-            System.out.println("HOra e data: "+c.getTime());
+
+//            ArrayList<String> listaPrioridade = new ArrayList<>();
+//            listaPrioridade.add("baixa");
+//            listaPrioridade.add("media");
+//            listaPrioridade.add("alta");
+//            listaPrioridade.add("urgente");
+//            for (int i=4;i>=1;i--) {
+//                prioridadeAtual = listaPrioridade.get(i);
+//                for (Chamado chamado: listaChamados) {
+//                    if (chamado.getPrioridade()==prioridade)
+//                        System.out.println("--> ID: " + chamado.getId() + " |Descroção: " + chamado.getDescricao() + " |Prioridade: " + chamado.getPrioridade());
+//                }
+//            }
         }
+
+
 }

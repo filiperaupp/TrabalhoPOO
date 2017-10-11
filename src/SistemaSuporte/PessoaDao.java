@@ -92,14 +92,6 @@ public class PessoaDao {
                 "SENHA = '" + clienteEdit.getSenha() + "'  " +
                 "WHERE ID=" + clienteEdit.getId() + ";";
         sqlite.executarSQL(sql);
-        System.out.println( "ID = " + clienteEdit.getId() );
-        System.out.println( "TIPO USUÁRIO = " + clienteEdit.getIdentificador());
-        System.out.println( "NOME = " + clienteEdit.getNome() );
-        System.out.println( "TELEFONE = " + clienteEdit.getTelefone() );
-        System.out.println( "EMAIL = " + clienteEdit.getEmail() );
-        System.out.println( "LOGIN = " + clienteEdit.getLogin() );
-        System.out.println( "SENHA = " + clienteEdit.getEmail() );
-        System.out.println();
     }
 
     public void editar(Tecnico tecnicoEdit) {

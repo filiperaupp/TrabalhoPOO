@@ -39,7 +39,7 @@ public class Tecnico extends Pessoa {
             for (int i=4;i>=1;i--) {
                 for (Chamado chamado : meusChamados) {
                     if (chamado.getPrioridade()==i)
-                        System.out.println("--> ID: " + chamado.getId() + " |Descroção: " + chamado.getDescricao() + " |Prioridade: " + chamado.getPrioridade());
+                        System.out.println("--> ID: " + chamado.getId() + " |Descrição: " + chamado.getDescricao() + " |Prioridade: " + chamado.getPrioridade());
                 }
             }
         }

@@ -10,6 +10,7 @@ public class Controller {
         System.out.println("** Cliente "+clienteLogado.getNome()+" logado no sistema.");
         int numeroIdCliente = clienteLogado.getId();
         do {
+            System.out.println("");
             System.out.println("-- Menu Cliente -- ");
             System.out.println("1- Abrir Chamado");
             System.out.println("2- Editar Chamado");
@@ -44,6 +45,7 @@ public class Controller {
         int operacaoT = 0;
         do {
             Tecnico tecnicoLogado = (Tecnico) pessoaLogada;
+            System.out.println("");
             System.out.println("** Técnico " + ((Tecnico) pessoaLogada).getNome() + " logado no sistema.**");
             System.out.println("-- Menu Técnico --");
             System.out.println("1- Mostrar Chamados Pendentes");
@@ -77,6 +79,7 @@ public class Controller {
         int ope = 0;
         do {
             Gerente gerenteLogado = (Gerente) pessoaLogada;
+            System.out.println("");
             System.out.println("**Gerente " + gerenteLogado.getNome() + " logado no sistema.**");
             System.out.println("-- Menu Gerente --");
             System.out.println("1- Cadastrar novo Gerente/Técnico/Cliente");
